@@ -2,7 +2,7 @@ Summary:	pop3.proxy is an application level gateway for the POP3 protocol
 Summary(pl):	pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3
 Name:		pop3proxy
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
@@ -11,6 +11,7 @@ Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 Source1:	pop3proxy.inetd
 Provides:	pop3daemon
 Prereq:		rc-inetd >= 0.8.1
+URL:		http://www.quietsche-entchen.de/software/pop3.proxy.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -61,7 +62,7 @@ fi
     
 %files
 %defattr(644,root,root,755)
-%doc *gz
+%doc *.gz
 %attr(755,root,root) %{_sbindir}/pop3.proxy
 %{_mandir}/man1/*
 %attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/pop3proxy
