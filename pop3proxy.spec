@@ -11,7 +11,6 @@ Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 Source1:	pop3proxy.inetd
 Provides:	pop3daemon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	proxytools
 
 %description
 pop3.proxy is an application level gateway for the POP3 protocol.
