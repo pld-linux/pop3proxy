@@ -44,6 +44,18 @@ gzip -9nf README rfc1939.txt
 install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/pop3proxy
 
+%post
+if [ -f /var/lock/subsys/rc-inetd ]; then
+    /etc/rc.d/init.d/rc-inetd reload 1>&2
+else
+    echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
+fi
+	
+%postun
+if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
+    /etc/rc.d/init.d/rc-inetd reload
+fi
+	    
 %clean
 rm -rf $RPM_BUILD_ROOT
 
