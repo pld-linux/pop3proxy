@@ -1,0 +1,9 @@
+SERVICE_NAME=pop3proxy
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=10110
+FLAGS=nowait
+USER=nobody
+SERVER=tcpd
+DAEMON=/usr/sbin/pop3.proxy
+DAEMONARGS="-e -t 30 127.0.0.1"
