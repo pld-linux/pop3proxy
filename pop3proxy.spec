@@ -6,6 +6,7 @@ Release:	3
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
+# Source0-md5:	9e6bf2493f1c12edaa11c97b7ef8d657
 Source1:	%{name}.inetd
 Provides:	pop3daemon
 Prereq:		rc-inetd >= 0.8.1
