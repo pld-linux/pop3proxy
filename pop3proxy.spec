@@ -13,17 +13,18 @@ Provides:	pop3daemon
 Prereq:		rc-inetd >= 0.8.1
 URL:		http://www.quietsche-entchen.de/software/pop3.proxy.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Conflicts:	proxytools
 
 %description
 pop3.proxy is an application level gateway for the POP3 protocol.
 Unlike generic TCP proxys (like tcpproxy) it looks into the data
-stream watching that client and server fullfill the protocol
+stream watching that client and server fulfil the protocol
 specification. pop3.proxy is based on RFC 1939.
 
 %description -l pl
 pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3. W odró¿nieniu
-od innych tego typu programów, pop3proxy nadzoruje transmisje
-sprawdzaj±c czy klient i serwer spe³niaj± specyfikacje protoko³u (RFC
+od innych tego typu programów, pop3proxy nadzoruje transmisjê
+sprawdzaj±c czy klient i serwer spe³niaj± specyfikacjê protoko³u (RFC
 1939).
 
 %prep
