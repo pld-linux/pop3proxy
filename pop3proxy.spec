@@ -2,7 +2,7 @@ Summary:	pop3.proxy is an application level gateway for the POP3 protocol
 Summary(pl):	pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3
 Name:		pop3proxy
 Version:	1.2.0
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Networking
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
