@@ -42,7 +42,7 @@ install pop3.proxy.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/pop3proxy
 
-gzip -9nf README rfc1939.txt 
+gzip -9nf README rfc1939.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,7 +58,7 @@ fi
 if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
 	/etc/rc.d/init.d/rc-inetd reload
 fi
-    
+
 %files
 %defattr(644,root,root,755)
 %doc *.gz
