@@ -8,6 +8,7 @@ Group:		Applications/Networking
 Group(de):	Applikationen/Netzwerkwesen
 Group(pl):	Aplikacje/Sieciowe
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
+Provides:	pop3daemon
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,25 +24,27 @@ sprawdzaj±c czy klient i serwer spe³niaj± specyfikacje protoko³u (RFC
 1939).
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-%{__make}
+%{__make} \
+	CC=%{__cc} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sbindir}
-install pop3.proxy $RPM_BUILD_ROOT/%{_sbindir}/
-install -d $RPM_BUILD_ROOT%{_mandir}/man1/
-install pop3.proxy.1 $RPM_BUILD_ROOT/%{_mandir}/man1/
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1}
 
-gzip -9nf README LICENSE rfc1939.txt 
+install pop3.proxy $RPM_BUILD_ROOT%{_sbindir}/
+install pop3.proxy.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+
+gzip -9nf README rfc1939.txt 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz LICENSE.gz rfc1939.txt.gz
+%doc *gz
 %attr(755,root,root) %{_sbindir}/pop3.proxy
 %{_mandir}/man1/*
