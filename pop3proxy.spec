@@ -1,5 +1,5 @@
 Summary:	pop3.proxy is an application level gateway for the POP3 protocol
-Summary(pl):	pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3.
+Summary(pl):	pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3
 Name:		pop3proxy
 Version:	1.2.0
 Release:	2
@@ -10,6 +10,7 @@ Group(pl):	Aplikacje/Sieciowe
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 Source1:	pop3proxy.inetd
 Provides:	pop3daemon
+Prereq:		rc-inetd >= 0.8.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,14 +35,17 @@ sprawdzaj±c czy klient i serwer spe³niaj± specyfikacje protoko³u (RFC
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man1,/etc/sysconfig/rc-inetd}
 
-install pop3.proxy $RPM_BUILD_ROOT%{_sbindir}/
-install pop3.proxy.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install pop3.proxy $RPM_BUILD_ROOT%{_sbindir}
+install pop3.proxy.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/pop3proxy
 
 gzip -9nf README rfc1939.txt 
-install -d $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/pop3proxy
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 if [ -f /var/lock/subsys/rc-inetd ]; then
@@ -49,15 +53,12 @@ if [ -f /var/lock/subsys/rc-inetd ]; then
 else
     echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
 fi
-	
+
 %postun
 if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
     /etc/rc.d/init.d/rc-inetd reload
 fi
-	    
-%clean
-rm -rf $RPM_BUILD_ROOT
-
+    
 %files
 %defattr(644,root,root,755)
 %doc *gz
