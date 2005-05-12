@@ -8,11 +8,11 @@ Group:		Applications/Networking
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 # Source0-md5:	9e6bf2493f1c12edaa11c97b7ef8d657
 Source1:	%{name}.inetd
-Provides:	pop3daemon
-Prereq:		rc-inetd >= 0.8.1
 URL:		http://www.quietsche-entchen.de/software/pop3.proxy.html
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Prereq:		rc-inetd >= 0.8.1
+Provides:	pop3daemon
 Conflicts:	proxytools
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 pop3.proxy is an application level gateway for the POP3 protocol.
@@ -31,7 +31,7 @@ sprawdzaj±c czy klient i serwer spe³niaj± specyfikacjê protoko³u (RFC
 
 %build
 %{__make} \
-	CC=%{__cc} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}"
 
 %install
@@ -62,6 +62,6 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc README rfc1939.txt
-%attr(640,root,root) %config %verify(not size mtime md5) /etc/sysconfig/rc-inetd/pop3proxy
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/pop3proxy
 %attr(755,root,root) %{_sbindir}/pop3.proxy
 %{_mandir}/man1/*
