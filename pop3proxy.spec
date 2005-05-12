@@ -9,7 +9,7 @@ Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 # Source0-md5:	9e6bf2493f1c12edaa11c97b7ef8d657
 Source1:	%{name}.inetd
 URL:		http://www.quietsche-entchen.de/software/pop3.proxy.html
-Prereq:		rc-inetd >= 0.8.1
+PreReq:		rc-inetd >= 0.8.1
 Provides:	pop3daemon
 Conflicts:	proxytools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -42,7 +42,6 @@ install pop3.proxy $RPM_BUILD_ROOT%{_sbindir}
 install pop3.proxy.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/pop3proxy
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
