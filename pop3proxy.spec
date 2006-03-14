@@ -9,7 +9,8 @@ Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 # Source0-md5:	9e6bf2493f1c12edaa11c97b7ef8d657
 Source1:	%{name}.inetd
 URL:		http://www.quietsche-entchen.de/software/pop3.proxy.html
-PreReq:		rc-inetd >= 0.8.1
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires:	rc-inetd >= 0.8.1
 Provides:	pop3daemon
 Conflicts:	proxytools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,15 +48,11 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/pop3proxy
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun
-if [ "$1" = "0" -a -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = "0" ]; then
+	%service -q rc-inetd reload
 fi
 
 %files
