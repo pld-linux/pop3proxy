@@ -1,5 +1,5 @@
 Summary:	pop3.proxy is an application level gateway for the POP3 protocol
-Summary(pl):	pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3
+Summary(pl.UTF-8):   pop3.proxy jest aplikacyjnÄ… bramkÄ… dla protokoÅ‚u POP3
 Name:		pop3proxy
 Version:	1.2.0
 Release:	4
@@ -21,10 +21,10 @@ Unlike generic TCP proxys (like tcpproxy) it looks into the data
 stream watching that client and server fulfil the protocol
 specification. pop3.proxy is based on RFC 1939.
 
-%description -l pl
-pop3.proxy jest aplikacyjn± bramk± dla protoko³u POP3. W odró¿nieniu
-od innych tego typu programów, pop3proxy nadzoruje transmisjê
-sprawdzaj±c czy klient i serwer spe³niaj± specyfikacjê protoko³u (RFC
+%description -l pl.UTF-8
+pop3.proxy jest aplikacyjnÄ… bramkÄ… dla protokoÅ‚u POP3. W odrÃ³Å¼nieniu
+od innych tego typu programÃ³w, pop3proxy nadzoruje transmisjÄ™
+sprawdzajÄ…c czy klient i serwer speÅ‚niajÄ… specyfikacjÄ™ protokoÅ‚u (RFC
 1939).
 
 %prep
