@@ -1,5 +1,5 @@
 Summary:	pop3.proxy is an application level gateway for the POP3 protocol
-Summary(pl.UTF-8):   pop3.proxy jest aplikacyjną bramką dla protokołu POP3
+Summary(pl.UTF-8):	pop3.proxy jest aplikacyjną bramką dla protokołu POP3
 Name:		pop3proxy
 Version:	1.2.0
 Release:	4
