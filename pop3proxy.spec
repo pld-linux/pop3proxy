@@ -4,7 +4,7 @@ Name:		pop3proxy
 Version:	1.2.0
 Release:	4
 License:	GPL
-Group:		Applications/Networking
+Group:		Networking/Daemons/POP3
 Source0:	http://www.quietsche-entchen.de/download/%{name}-%{version}.tar.gz
 # Source0-md5:	9e6bf2493f1c12edaa11c97b7ef8d657
 Source1:	%{name}.inetd
